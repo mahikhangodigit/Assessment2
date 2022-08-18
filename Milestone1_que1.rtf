@@ -1,0 +1,187 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue0;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.22000}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\cf1\f0\fs44\lang9 Question -1\par
+XML-Based Configuration\fs22\par
+\b\fs28 Main Class\b0\fs22\par
+package xmlConfiguration;\par
+import org.springframework.context.ApplicationContext;\par
+import org.springframework.context.support.ClassPathXmlApplicationContext;\par
+public class Main \{\par
+\tab public static void main(String [] args)\{\par
+\tab\tab ApplicationContext context=new ClassPathXmlApplicationContext("beans.xml");\par
+\tab\tab Sales obj=(Sales) context.getBean("sales");\par
+\tab\tab obj.getPrice();\par
+\tab\tab obj.getDifference();\par
+\tab\}\par
+\}\par
+\b\fs28 Sales Class\b0\fs22\par
+\b\fs24 package\b0  xmlConfiguration;\par
+\b public\b0  \b class\b0  Sales \{\par
+\tab\b private\b0  \b int\b0  price;\par
+\tab\b private\b0  \b int\b0  difference;\par
+\tab\b public\b0  \b int\b0  getPrice() \{\par
+\tab\tab\b return\b0  price;\par
+\tab\}\par
+\tab\b public\b0  \b void\b0  setPrice(\b int\b0  price) \{\par
+\tab\tab\b this\b0 .price = price;\par
+\tab\}\par
+\tab\b public\b0  \b int\b0  getDifference() \{\par
+\tab\tab\b return\b0  difference;\par
+\tab\}\par
+\tab\b public\b0  \b void\b0  setDifference(\b int\b0  difference) \{\par
+\tab\tab\b this\b0 .difference = difference;\par
+\tab\}\par
+\}\par
+\lang1033 beans.xml File\par
+<?xml version=\i "1.0"\i0  encoding=\i "UTF-8"\i0 ?>\par
+<beans xmlns=\i "http://www.springframework.org/schema/beans"\i0\par
+ xmlns:xsi=\i "http://www.w3.org/2001/XMLSchema-instance"\i0\par
+ xsi:schemaLocation=\i "http://www.springframework.org/schema/beans\i0\par
+\i    {{\field{\*\fldinst{HYPERLINK http://www.springframework.org/schema/beans/spring-beans-3.0.xsd }}{\fldrslt{http://www.springframework.org/schema/beans/spring-beans-3.0.xsd\ul0\cf0}}}}\f0\fs24 "\i0 >\par
+   \par
+ <bean id=\i "sales"\i0  class=\i "xmlConfiguration.Sales"\i0 >\par
+  <property name=\i "Electronics"\i0  value=\i "20%"\i0 ></property>\par
+  <property name=\i "Grocery"\i0  value=\i "30%"\i0 ></property>\par
+ </bean>\par
+</beans>\par
+\par
+\b\fs28 pom.xml File\b0\fs24\par
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 {{\field{\*\fldinst{HYPERLINK https://maven.apache.org/xsd/maven-4.0.0.xsd }}{\fldrslt{https://maven.apache.org/xsd/maven-4.0.0.xsd\ul0\cf0}}}}\f0\fs24 ">\par
+  <modelVersion>4.0.0</modelVersion>\par
+  <groupId>com.milestone.2</groupId>\par
+  <artifactId>xmlConfiguration</artifactId>\par
+  <version>0.0.1-SNAPSHOT</version>\par
+  <name>XML_Configuration</name>\par
+  <dependencies>\par
+<dependency>\par
+      <groupId>org.springframework</groupId>\par
+      <artifactId>spring-context</artifactId>\par
+      <version>5.1.0.RELEASE</version>\par
+</dependency>\par
+</dependencies>\par
+<properties>\par
+    <org.springframework-version>5.1.0.RELEASE</org.springframework-version>\par
+</properties>\par
+</project>\par
+\b\fs40\par
+Annotation-Based Configuration\par
+\b0\fs24\par
+\lang16393 COLLEGE CLASS\fs20\par
+\b package\b0  com.godigit.auto;\par
+\b import\b0  org.springframework.beans.factory.annotation.Autowired;\par
+\b public\b0  \b class\b0  College \{\par
+\tab\b private\b0  Principal princi;\par
+//Getter method\par
+\tab\b public\b0  Principal getPrinci() \{\par
+\tab\tab\b return\b0  princi;\par
+\tab\}\par
+//using Autowire Annotation\par
+@Autowired\par
+\tab\b public\b0  \b void\b0  setPrinci(Principal princi) \{\par
+\tab\tab\b this\b0 .princi = princi;\par
+\tab\}\par
+\tab\b public\b0  \b void\b0  show()\par
+\tab\{\par
+\tab\tab System.\b\i out\b0\i0 .println("\lang1033 Jingle bell jingle bell\lang16393 ");\tab\par
+\tab\}\par
+\}\par
+\par
+\b\fs28 Main Class\b0\fs20\par
+package com.godigit.auto;\par
+import org.springframework.context.ApplicationContext;\par
+import org.springframework.context.support.ClassPathXmlApplicationContext;\par
+\par
+public class Head \{\par
+\tab public static void main(String[] args)\par
+\tab\{\par
+\tab\tab ApplicationContext context= new ClassPathXmlApplicationContext("beans.xml");\par
+//creating object of College class\par
+\tab\tab College c=(College)context.getBean("college");\par
+\tab\tab c.show();\par
+\tab\tab System.out.println(c.getPrinci());\par
+\tab\}\par
+\}\par
+\b\fs28 bean.xml file\b0\fs20\par
+<?xml version=\i "1.0"\i0  encoding=\i "UTF-8"\i0 ?>\par
+<beans xmlns=\i "http://www.springframework.org/schema/beans"\i0\par
+       xmlns:xsi=\i "http://www.w3.org/2001/XMLSchema-instance"\i0\par
+       xmlns:context=\i "http://www.springframework.org/schema/context"\i0\par
+       xsi:schemaLocation=\i "http://www.springframework.org/schema/beans \i0\par
+\i            {{\field{\*\fldinst{HYPERLINK http://www.springframework.org/schema/beans/spring-beans-3.0.xsd }}{\fldrslt{http://www.springframework.org/schema/beans/spring-beans-3.0.xsd\ul0\cf0}}}}\i0\f0\fs20\par
+\i            {{\field{\*\fldinst{HYPERLINK http://www.springframework.org/schema/context }}{\fldrslt{http://www.springframework.org/schema/context\ul0\cf0}}}}\i0\f0\fs20\par
+\i            {{\field{\*\fldinst{HYPERLINK http://www.springframework.org/schema/context/spring-context-3.0.xsd }}{\fldrslt{http://www.springframework.org/schema/context/spring-context-3.0.xsd\ul0\cf0}}}}\f0\fs20 "\i0 >\par
+     <context:annotation-config/>\par
+   <bean id=\i "princi"\i0  class=\i "com.godigit.auto.Principal"\i0 >\par
+   <property name=\i "name"\i0  value=\i "\lang1033 Dusky\lang16393 "\i0 ></property>\par
+   </bean>\par
+   <bean id=\i "college"\i0  class=\i "com.godigit.auto.College"\i0 ></bean>\par
+   </beans>\par
+
+\pard\sa200\sl240\slmult1\par
+
+\pard\sa200\sl276\slmult1\b\fs40\lang1033 Java Based Configuration\b0\fs20\par
+\b\fs28 Main Class\b0\fs20\par
+package com.java_based_config;\par
+\par
+import org.springframework.context.ApplicationContext;\par
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;\par
+\par
+public class Main \{\par
+\par
+\tab public static void main(String[] args) \{\par
+\tab\tab ApplicationContext context=new AnnotationConfigApplicationContext(CompanyConfig.class);\par
+\tab\tab Company company=context.getBean("comapany",Company.class);\tab\par
+\tab\}\par
+\}\par
+Company class\par
+\b\fs24 package\b0  com.java_based_config;\par
+\par
+\b import\b0  org.springframework.context.annotation.Configuration;\par
+\par
+@Configuration\par
+\b public\b0  \b class\b0  Company\{\par
+\tab\b public\b0  \b void\b0  companyInfo() \{\par
+\tab\tab System.\b\i out\b0\i0 .println("Company");\par
+\tab\}\par
+\}\par
+\fs20 CompanyConfig Class\par
+package com.java_based_config;\par
+\par
+import org.springframework.context.annotation.Bean;\par
+import org.springframework.context.annotation.ComponentScan;\par
+import org.springframework.context.annotation.Configuration;\par
+\par
+@Configuration\par
+@ComponentScan(basePackages="com.java_based_config")\par
+public class CompanyConfig \{\par
+\tab @Bean\par
+\tab public void companyInfo()\{\par
+\tab\tab System.out.println("Go Digit General Insurance");\par
+\tab\}\par
+\}\par
+\par
+\b\fs32 pom.xml File\b0\fs20\par
+\fs24 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 {{\field{\*\fldinst{HYPERLINK https://maven.apache.org/xsd/maven-4.0.0.xsd }}{\fldrslt{https://maven.apache.org/xsd/maven-4.0.0.xsd\ul0\cf0}}}}\f0\fs24 ">\par
+  <modelVersion>4.0.0</modelVersion>\par
+  <groupId>com.milestone.java</groupId>\par
+  <artifactId>java_based_config</artifactId>\par
+  <version>0.0.1-SNAPSHOT</version>\par
+  <dependencies>\par
+<dependency>\par
+      <groupId>org.springframework</groupId>\par
+      <artifactId>spring-context</artifactId>\par
+      <version>5.1.0.RELEASE</version>\par
+</dependency>\par
+</dependencies>\par
+<properties>\par
+    <org.springframework-version>5.1.0.RELEASE</org.springframework-version>\par
+</properties>\par
+</project>\fs20\lang16393\par
+\fs24\lang9\par
+\tab\tab\par
+\par
+\par
+\fs22\par
+}
+ 
